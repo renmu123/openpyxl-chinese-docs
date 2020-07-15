@@ -1,0 +1,52 @@
+Versions:
+python: 3.6.9
+openpyxl: 3.0.1
+xlsxwriter: 1.2.5
+
+Dimensions:
+    Rows = 1000
+    Cols = 50
+    Sheets = 1
+    Proportion text = 0.10
+
+Times:
+    xlsxwriter            :   0.59
+    xlsxwriter (optimised):   0.54
+    openpyxl              :   0.73
+    openpyxl (optimised)  :   0.61
+
+
+Versions:
+python: 3.7.5
+openpyxl: 3.0.1
+xlsxwriter: 1.2.5
+
+Dimensions:
+    Rows = 1000
+    Cols = 50
+    Sheets = 1
+    Proportion text = 0.10
+
+Times:
+    xlsxwriter            :   0.65
+    xlsxwriter (optimised):   0.53
+    openpyxl              :   0.70
+    openpyxl (optimised)  :   0.63
+
+
+Versions:
+python: 3.8.0
+openpyxl: 3.0.1
+xlsxwriter: 1.2.5
+
+Dimensions:
+    Rows = 1000
+    Cols = 50
+    Sheets = 1
+    Proportion text = 0.10
+
+Times:
+    xlsxwriter            :   0.54
+    xlsxwriter (optimised):   0.50
+    openpyxl              :   1.10
+    openpyxl (optimised)  :   0.57

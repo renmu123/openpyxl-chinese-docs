@@ -1,0 +1,44 @@
+Versions:
+python: 3.6.9
+xlread: 1.2.0
+openpyxl: 3.0.1
+
+openpyxl, read-only
+    Workbook loaded 1.14s
+    OptimizationData 23.17s
+    Output Model 0.00s
+    >>DATA>> 0.00s
+    Store days 0% 23.92s
+    Store days 100% 17.35s
+    Total time 65.59s
+    0 cells in total
+
+Versions:
+python: 3.7.5
+xlread: 1.2.0
+openpyxl: 3.0.1
+
+openpyxl, read-only
+    Workbook loaded 0.98s
+    OptimizationData 21.35s
+    Output Model 0.00s
+    >>DATA>> 0.00s
+    Store days 0% 20.70s
+    Store days 100% 16.16s
+    Total time 59.19s
+    0 cells in total
+
+Versions:
+python: 3.8.0
+xlread: 1.2.0
+openpyxl: 3.0.1
+
+openpyxl, read-only
+    Workbook loaded 0.90s
+    OptimizationData 19.58s
+    Output Model 0.00s
+    >>DATA>> 0.00s
+    Store days 0% 19.35s
+    Store days 100% 15.02s
+    Total time 54.85s
+    0 cells in total
