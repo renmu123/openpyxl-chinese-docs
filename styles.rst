@@ -1,21 +1,21 @@
 Working with styles
 ===================
 
-Introduction
+介绍
 ------------
 
 Styles are used to change the look of your data while displayed on screen.
 They are also used to determine the formatting for numbers.
 
-Styles can be applied to the following aspects:
+样式可以应用于以下方面:
 
-   * font to set font size, color, underlining, etc.
-   * fill to set a pattern or color gradient
-   * border to set borders on a cell
-   * cell alignment
-   * protection
+   * Font：设置字体大小、颜色、下划线等等
+   * PatternFill：设置图案或者颜色渐变
+   * Border：设置单元格的边框
+   * Alignment：单元格对齐
+   * Protection：保护工作表
 
-The following are the default values
+以下是默认值
 
 .. :: doctest
 
@@ -60,17 +60,15 @@ The following are the default values
 ...                         hidden=False)
 >>>
 
-Cell Styles and Named Styles
+单元格样式和命名样式
 ----------------------------
 
-There are two types of styles: cell styles and named styles, also known as style templates.
+有两种不同的样式: 单元格样式和命名样式, 也被成为样式模板。
 
-Cell Styles
+单元格样式
 +++++++++++
 
-Cell styles are shared between objects and once they have been assigned they
-cannot be changed. This stops unwanted side-effects such as changing the
-style for lots of cells when only one changes.
+单元格样式在对象之间共享，一旦被分配之后就无法更改。这样可以避免不必要的副作用，例如仅更改一个单元格时就更改许多单元格的样式。
 
 .. :: doctest
 
@@ -88,15 +86,15 @@ style for lots of cells when only one changes.
 >>>
 >>> a1.font.italic = True # is not allowed # doctest: +SKIP
 >>>
->>> # If you want to change the color of a Font, you need to reassign it::
+>>> # If you want to change the color of a Font, you need to reassign it
 >>>
 >>> a1.font = Font(color="FF0000", italic=True) # the change only affects A1
 
 
-Copying styles
+复制样式
 --------------
 
-Styles can also be copied
+样式也可以被复制
 
 .. :: doctest
 
@@ -114,28 +112,30 @@ Styles can also be copied
 14.0
 
 
-Colours
+颜色
 -------
-Colours for fonts, backgrounds, borders, etc. can be set in three ways: indexed, aRGB or theme. Indexed colours are the legacy implementation and the colours themselves depend upon the index provided with the workbook or with the application default. Theme colours are useful for complementary shades of colours but also depend upon the theme being present in the workbook. It is, therefore, advisable to use aRGB colours.
+
+可以通过三种方式：indexed, aRGB or theme 来设置字体、背景、边框等的颜色。
+索引颜色（indexed colours）是旧版实现，颜色本身取决于工作簿或应用程序默认提供的索引。主题颜色可用于互补色，但也取决于工作簿中存在的主题。因此，建议使用aRGB颜色。
 
 .. :: doctest
 
-aRGB colours
+aRGB 颜色
 ++++++++++++
 
-RGB colours are set using hexadecimal values for red, green and blue.
+使用红色，绿色和蓝色的十六进制值设置 RGB 颜色。
 
 >>> from openpyxl.styles import Font
 >>> font = Font(color="FF0000")
 
-The alpha value refers in theory to the transparency of the colour but this is not relevant for cell styles. The default of 00 will prepended to any simple RGB value:
+理论上，alpha值是指颜色的透明度，但这与单元格样式无关。默认值00将前置任何简单的RGB值：
 
 >>> from openpyxl.styles import Font
 >>> font = Font(color="00FF00")
 >>> font.color.rgb
 '0000FF00'
 
-There is also support for legacy indexed colours as well as themes and tints.
+还支持传统索引颜色以及主题和色彩（ themes and tints）。
 
 >>> from openpyxl.styles.colors import Color
 >>> c = Color(indexed=32)
@@ -147,11 +147,11 @@ Indexed Colours
 .. raw:: html
    :file: colours.html
 
-The indices 64 and 65 cannot be set and are reserved for the system foreground and background colours respectively.
+索引64和65不能设置，并且分别保留给系统前景色和背景色。
 
-Applying Styles
+应用样式
 ---------------
-Styles are applied directly to cells
+样式被直接应用到单元格
 
 .. :: doctest
 
@@ -162,6 +162,7 @@ Styles are applied directly to cells
 >>> c = ws['A1']
 >>> c.font = Font(size=12)
 
+样式也可以应用于列和行，但是请注意，这仅适用于关闭文件后创建的单元格（在Excel）。如果要对整个行和列应用样式，则必须自己将样式应用于每个单元格。这是文件格式的限制::
 Styles can also applied to columns and rows but note that this applies only
 to cells created (in Excel) after the file is closed. If you want to apply
 styles to entire rows and columns then you must apply the style to each cell
@@ -174,14 +175,11 @@ yourself. This is a restriction of the file format::
 
 .. _styling-merged-cells:
 
-Styling Merged Cells
+合并单元格的样式
 --------------------
 
-The merged cell behaves similarly to other cell ojects.
-Its value and format is defined in its top-left cell.
-In order to change the border of the whole merged cell,
-change the border of its top-left cell.
-The formatting is generated for the purpose of writing.
+合并单元格和其他单元格对象的行为相似，通过左上单元格来定义值和样式。可以改变左上单元格的边框来改变整个合并单元格的边框。
+这种格式是出于编辑目的才被生成（The formatting is generated for the purpose of writing.）
 
 .. :: doctest
 
@@ -207,7 +205,7 @@ The formatting is generated for the purpose of writing.
 >>> wb.save("styled.xlsx")
 
 
-Edit Page Setup
+编辑页面设置
 -------------------
 .. :: doctest
 
@@ -222,18 +220,15 @@ Edit Page Setup
 >>> ws.page_setup.fitToWidth = 1
 
 
-Named Styles
+命名样式
 ++++++++++++
 
-In contrast to Cell Styles, Named Styles are mutable. They make sense when
-you want to apply formatting to lots of different cells at once. NB. once you
-have assigned a named style to a cell, additional changes to the style will
-**not** affect the cell.
+与单元格样式相反，命名样式是可变的。当您想一次将格式应用于许多不同的单元格时，它们很有意义。注意一旦将命名样式分配给单元格后，对该样式的更改将**不会**影响单元格。
 
-Once a named style has been registered with a workbook, it can be referred to simply by name.
+一旦命名样式被注册到工作簿，就可以简单的通过名字来进行引用
 
 
-Creating a Named Style
+创建命名样式
 ----------------------
 
 .. :: doctest
@@ -244,97 +239,93 @@ Creating a Named Style
 >>> bd = Side(style='thick', color="000000")
 >>> highlight.border = Border(left=bd, top=bd, right=bd, bottom=bd)
 
-Once a named style has been created, it can be registered with the workbook:
+创建命名样式后，即可将其注册到工作簿中：
 
 >>> wb.add_named_style(highlight)
 
-But named styles will also be registered automatically the first time they are assigned to a cell:
+命名样式在首次分配给单元格时也会自动注册：
 
 >>> ws['A1'].style = highlight
 
-Once registered, assign the style using just the name:
+注册后，仅使用名称分配样式：
 
 >>> ws['D5'].style = 'highlight'
 
 
-Using builtin styles
+使用内置样式（Ps：以下注释未译者根据office365中文版进行添加）
 --------------------
 
-The specification includes some builtin styles which can also be used.
-Unfortunately, the names for these styles are stored in their localised
-forms. openpyxl will only recognise the English names and only exactly as
-written here. These are as follows:
+该规范（specification）包括一些可以使用的内置样式。不幸的是，这些样式的名称以其本地化形式存储。openpyxl 仅会识别英文名称，并且只能与此处的文字完全一样。
 
+* 'Normal' # 无样式
 
-* 'Normal' # same as no style
-
-Number formats
+数字格式
 ++++++++++++++
 
-* 'Comma'
-* 'Comma [0]'
-* 'Currency'
-* 'Currency [0]'
-* 'Percent'
+* 'Comma' # 千位分隔，保留两位小数‘Warning Text’
+* 'Comma [0]' # 千位分隔，不保留小数
+* 'Currency' # 货币，保留两位小数
+* 'Currency [0]' # 货币，不保留小数
+* 'Percent' # 百分比
 
 Informative
 +++++++++++
 
-* 'Calculation'
-* 'Total'
-* 'Note'
-* 'Warning Text'
-* 'Explanatory Text'
+* 'Calculation' # 计算
+* 'Total' # 汇总
+* 'Note' # 注释
+* 'Warning Text' # 警告文本
+* 'Explanatory Text' # 解释性文本
 
-Text styles
+文字样式
 +++++++++++
 
-* 'Title'
-* 'Headline 1'
-* 'Headline 2'
-* 'Headline 3'
-* 'Headline 4'
-* 'Hyperlink'
-* 'Followed Hyperlink'
-* 'Linked Cell'
+* 'Title' # 标题
+* 'Headline 1' # 标题1
+* 'Headline 2' # 标题2
+* 'Headline 3' # 标题3
+* 'Headline 4' # 标题4
+* 'Hyperlink' # 超链接
+* 'Followed Hyperlink' # 已访问的超链接
+* 'Linked Cell' # 链接单元格
 
 Comparisons
 +++++++++++
 
-* 'Input'
-* 'Output'
-* 'Check Cell'
-* 'Good'
-* 'Bad'
-* 'Neutral'
+* 'Input' # 输入
+* 'Output' # 输出
+* 'Check Cell' # 检查单元格
+* 'Good' # 好
+* 'Bad' # 坏
+* 'Neutral' # 始终
 
-Highlights
+高亮
 ++++++++++
 
-* 'Accent1'
+* 'Accent1' # 着色1
 * '20 % - Accent1'
 * '40 % - Accent1'
 * '60 % - Accent1'
-* 'Accent2'
+* 'Accent2'  # 着色2
 * '20 % - Accent2'
 * '40 % - Accent2'
 * '60 % - Accent2'
-* 'Accent3'
+* 'Accent3' # 着色3
 * '20 % - Accent3'
 * '40 % - Accent3'
 * '60 % - Accent3'
-* 'Accent4'
+* 'Accent4' # 着色4
 * '20 % - Accent4'
 * '40 % - Accent4'
 * '60 % - Accent4'
-* 'Accent5'
+* 'Accent5' # 着色5
 * '20 % - Accent5'
 * '40 % - Accent5'
 * '60 % - Accent5'
-* 'Accent6'
+* 'Accent6' # 着色6
 * '20 % - Accent6'
 * '40 % - Accent6'
 * '60 % - Accent6'
-* 'Pandas'
+* 'Pandas' # 好像是自定义的
 
-For more information about the builtin styles please refer to the :mod:`openpyxl.styles.builtins`
+有关内置样式的更多信息，请参阅 :mod:`openpyxl.styles.builtins`
