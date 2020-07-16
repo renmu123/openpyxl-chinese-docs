@@ -1,27 +1,26 @@
-Inserting and deleting rows and columns, moving ranges of cells
+插入删除行或列, 移动范围单元格
 ===============================================================
 
 
-Inserting rows and columns
+插入行和列
 --------------------------
 
-You can insert rows or columns using the relevant worksheet methods:
+你可以使用工作表相关的方法来插入行和列:
 
     * :func:`openpyxl.worksheet.worksheet.Worksheet.insert_rows`
     * :func:`openpyxl.worksheet.worksheet.Worksheet.insert_cols`
     * :func:`openpyxl.worksheet.worksheet.Worksheet.delete_rows`
     * :func:`openpyxl.worksheet.worksheet.Worksheet.delete_cols`
 
-The default is one row or column. For example to insert a row at 7 (before
-the existing row 7)::
+默认是一行或一列。 例如在第七行插入一行 (存在第七行)::
 
     >>> ws.insert_rows(7)
 
 
-Deleting rows and columns
+删除多行或多列
 --------------------------
 
-To delete the columns ``F:H``::
+删除 ``F:H`` 列::
 
     >>> ws.delete_cols(6, 3)
 
@@ -29,19 +28,15 @@ To delete the columns ``F:H``::
 Moving ranges of cells
 ----------------------
 
-You can also move ranges of cells within a worksheet::
+你也可以在一个工作表内移动范围单元格::
 
     >>> ws.move_range("D4:F10", rows=-1, cols=2)
 
-This will move the cells in the range ``D4:F10`` up one row, and right two
-columns. The cells will overwrite any existing cells.
+这会将 ``D4:F10`` 单元格向上移动一行向右移动两列，已存在的单元格将会被覆盖
 
-If cells contain formulae you can let openpyxl translate these for you, but
-as this is not always what you want it is disabled by default. Also only the
-formulae in the cells themselves will be translated. References to the cells
-from other cells or defined names will not be updated; you can use the
-:doc:`formula` translator to do this::
+如果单元格包含公式，你可以让 openpyxl 帮你进行translate，但也并非总是你想要的结果，因此默认是禁用的。
+同时，只有单元格本身的公式将会被translate。其他单元格对该单元格的引用或defined name将不会被更新。你可以使用 :doc:`formula` 来做这件事::
 
     >>> ws.move_range("G4:H10", rows=1, cols=1, translate=True)
 
-This will move the relative references in formulae in the range by one row and one column.
+公式中的相对引用移动一行和一列
