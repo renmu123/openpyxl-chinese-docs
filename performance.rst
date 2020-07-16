@@ -1,4 +1,4 @@
-Performance
+性能
 ===========
 
 openpyxl attempts to balance functionality and performance. Where in doubt,
@@ -10,14 +10,14 @@ cases involve either only reading or writing files, the :doc:`optimized`
 modes mean this is less of a problem.
 
 
-Benchmarks
+基准测试
 ----------
 
 All benchmarks are synthetic and extremely dependent upon the hardware but
 they can nevertheless give an indication.
 
 
-Write Performance
+写性能
 +++++++++++++++++
 
 The `benchmark code
@@ -34,7 +34,7 @@ Performance is compared with the excellent alternative library xlsxwriter
 .. literalinclude:: write_performance.txt
 
 
-Read Performance
+读性能
 ++++++++++++++++
 
 Performance is measured using a file provided with a previous `bug report
@@ -58,13 +58,10 @@ reduces performance.
 .. literalinclude:: read_performance.txt
 
 
-Parallelisation
+并行
 +++++++++++++++
 
-Reading worksheets is fairly CPU-intensive which limits any benefits to be
-gained by parallelisation. However, if you are mainly interested in dumping
-the contents of a workbook then you can use openpyxl's read-only mode and
-open multiple instances of a workbook and take advantage of multiple CPUs.
+读取工作表是CPU密集限制了从并行中获取好处。但是，如果你对dump工作表内容感兴趣你可以使用 openpyxl 的只读模式打开复数工作表来利用多核CPU
 
 `Sample code <https://bitbucket.org/snippets/openpyxl/AexG8E>`_ using the
 same source file as for read performance shows that performance scales
