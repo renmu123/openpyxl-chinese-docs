@@ -214,10 +214,10 @@ Values only
   (None, None, None)
 
 
-Data storage
+数据存储
 ------------
 
-Once we have a :class:`Cell`, we can assign it a value::
+一旦有了 :class:`Cell`, 我们可以为其分配一个值::
 
     >>> c.value = 'hello, world'
     >>> print(c.value)
@@ -228,18 +228,17 @@ Once we have a :class:`Cell`, we can assign it a value::
     3.14
 
 
-Saving to a file
+保存至文件
 ++++++++++++++++
 
-The simplest and safest way to save a workbook is by using the
-:func:`Workbook.save` method of the :class:`Workbook` object::
+保存工作表最简单和安全的方法就是使用 :class:`Workbook` 类的 :func:`Workbook.save` 方法::
 
     >>> wb = Workbook()
     >>> wb.save('balances.xlsx')
 
 .. warning::
 
-   This operation will overwrite existing files without warning.
+   这个操作将会没有警告的覆盖已存在的we年
 
 .. note::
 
@@ -251,7 +250,7 @@ The simplest and safest way to save a workbook is by using the
     favourite ZIP archive manager.
 
 
-Saving as a stream
+保存成流
 ++++++++++++++++++
 
 If you want to save the file to a stream, e.g. when using a web application
@@ -268,14 +267,13 @@ such as Pyramid, Flask or Django then you can simply provide a
             stream = tmp.read()
 
 
-You can specify the attribute `template=True`, to save a workbook
-as a template::
+你可以指定属性 `template=True` 将工作表保存为模板::
 
     >>> wb = load_workbook('document.xlsx')
     >>> wb.template = True
     >>> wb.save('document_template.xltx')
 
-or set this attribute to `False` (default), to save as a document::
+或者设置属性为 `False` (默认) 将其保存为一个文档::
 
     >>> wb = load_workbook('document_template.xltx')
     >>> wb.template = False
@@ -289,7 +287,7 @@ or set this attribute to `False` (default), to save as a document::
 
 .. note::
 
-    The following will fail::
+    以下操作将会失败::
 
     >>> wb = load_workbook('document.xlsx')
     >>> # Need to save with the extension *.xlsx
@@ -311,11 +309,10 @@ or set this attribute to `False` (default), to save as a document::
     >>> # MS Excel will not open the document
 
 
-Loading from a file
+从文件加载
 -------------------
 
-The same way as writing, you can use the :func:`openpyxl.load_workbook` to
-open an existing workbook::
+你可以使用 :func:`openpyxl.load_workbook` 方法来打开一个已存在的工作表::
 
     >>> from openpyxl import load_workbook
     >>> wb2 = load_workbook('test.xlsx')
