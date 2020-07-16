@@ -1,16 +1,14 @@
-Optimised Modes
+优化模式
 ===============
 
 
-Read-only mode
+只读模式
 --------------
 
-Sometimes, you will need to open or write extremely large XLSX files,
-and the common routines in openpyxl won't be able to handle that load.
-Fortunately, there are two modes that enable you to read and write unlimited
-amounts of data with (near) constant memory consumption.
+有时，你可能需要打开或写入极端大的 XLSX 文件，但通用的 openpyxl 程序无法处理这么大的负载。
+幸运的是，有两种模式可以使你在（几乎）恒定的内存消耗下读写无限量的数据。
 
-Introducing :class:`openpyxl.worksheet._read_only.ReadOnlyWorksheet`::
+介绍 :class:`openpyxl.worksheet._read_only.ReadOnlyWorksheet`::
 
     from openpyxl import load_workbook
     wb = load_workbook(filename='large_file.xlsx', read_only=True)
@@ -22,9 +20,9 @@ Introducing :class:`openpyxl.worksheet._read_only.ReadOnlyWorksheet`::
 
 .. warning::
 
-    * :class:`openpyxl.worksheet._read_only.ReadOnlyWorksheet` is read-only
+    * :class:`openpyxl.worksheet._read_only.ReadOnlyWorksheet` 是只读的
 
-Cells returned are not regular :class:`openpyxl.cell.cell.Cell` but
+单元格的返回值不是 :class:`openpyxl.cell.cell.Cell` 而是
 :class:`openpyxl.cell._read_only.ReadOnlyCell`.
 
 
@@ -42,12 +40,11 @@ attributes should allow you to work with the file::
     ws.reset_dimensions()
 
 
-Write-only mode
+只写模式
 ---------------
 
-Here again, the regular :class:`openpyxl.worksheet.worksheet.Worksheet` has been replaced
-by a faster alternative, the :class:`openpyxl.worksheet._write_only.WriteOnlyWorksheet`.
-When you want to dump large amounts of data make sure you have `lxml` installed.
+常规的 :class:`openpyxl.worksheet.worksheet.Worksheet` 被替代成更快的 :class:`openpyxl.worksheet._write_only.WriteOnlyWorksheet` 。
+当你想导出大量数据的时候请确保安装了 `lxml` 库.
 
 .. :: doctest
 
@@ -62,7 +59,7 @@ When you want to dump large amounts of data make sure you have `lxml` installed.
 >>> # save the file
 >>> wb.save('new_big_file.xlsx') # doctest: +SKIP
 
-If you want to have cells with styles or comments then use a :func:`openpyxl.cell.WriteOnlyCell`
+如果你想要单元格带格式或者注释可以使用 :func:`openpyxl.cell.WriteOnlyCell`
 
 .. :: doctest
 
@@ -79,28 +76,17 @@ If you want to have cells with styles or comments then use a :func:`openpyxl.cel
 >>> wb.save('write_only_file.xlsx')
 
 
-This will create a write-only workbook with a single sheet, and append
-a row of 3 cells: one text cell with a custom font and a comment, a
-floating-point number, and an empty cell (which will be discarded
-anyway).
+这会创建一个只有一张工作表的只写工作簿，写入三个单元格的一行：一个带有自定义字体和评注释的文字单元格，一个浮点数单元格和一个空单元格（一定会被丢弃）。
 
 .. warning::
 
-    * Unlike a normal workbook, a newly-created write-only workbook
-      does not contain any worksheets; a worksheet must be specifically
-      created with the :func:`create_sheet()` method.
+    * 和普通工作簿不同的是，新创建的只写工作簿没有任何工作表；工作表只能由 :func:`create_sheet()` 方法进行创建。
 
-    * In a write-only workbook, rows can only be added with
-      :func:`append()`. It is not possible to write (or read) cells at
-      arbitrary locations with :func:`cell()` or :func:`iter_rows()`.
+    * 在只读工作簿中，只能由 :func:`append()` 来添加行。无法使用 :func:`cell()` 或 :func:`iter_rows()` 对任意位置的单元进行读取或写入。
 
-    * It is able to export unlimited amount of data (even more than Excel can
-      handle actually), while keeping memory usage under 10Mb.
+    * 可以导出不限量的数据（即使超过 Excel 的处理上限），同时内存使用量小于10Mb。
 
-    * A write-only workbook can only be saved once. After
-      that, every attempt to save the workbook or append() to an existing
-      worksheet will raise an :class:`openpyxl.utils.exceptions.WorkbookAlreadySaved`
-      exception.
+    * 一个只写工作簿只能保存一次。在保存后文件后在尝试进行保存获取 append() 会引发 :class:`openpyxl.utils.exceptions.WorkbookAlreadySaved` 错误。
 
     * Everything that appears in the file before the actual cell data must be created
       before cells are added because it must written to the file before then.
