@@ -252,7 +252,7 @@ yourself. This is a restriction of the file format::
 >>> ws['D5'].style = 'highlight'
 
 
-使用内置样式（Ps：以下注释未译者根据office365中文版进行添加）
+使用内置样式（Ps：以下注释由译者根据office365中文版进行添加）
 --------------------
 
 该规范（specification）包括一些可以使用的内置样式。不幸的是，这些样式的名称以其本地化形式存储。openpyxl 仅会识别英文名称，并且只能与此处的文字完全一样。
