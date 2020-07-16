@@ -1,9 +1,9 @@
 Parsing Formulas
 ================
 
-`openpyxl` supports limited parsing of formulas embedded in cells. The
-`openpyxl.formula` package contains a `Tokenizer` class to break
-formulas into their consitutuent tokens. Usage is as follows:
+`openpyxl` 支持对单元格中嵌入的公式进行有限的解析。
+`openpyxl.formula` 类包含 `Tokenizer` 类用于将公式分解为其组成的tokens（`openpyxl.formula` package contains a `Tokenizer` class to break
+formulas into their consitutuent tokens.） 用法如下:
 
 .. doctest
 
@@ -22,7 +22,7 @@ formulas into their consitutuent tokens. Usage is as follows:
            )       FUNC    CLOSE
            )       FUNC    CLOSE
 
-As shown above, tokens have three attributes of interest:
+如上所示, tokens 有三个两人感兴趣的属性:
 
 * ``.value``: The substring of the formula that produced this token
 

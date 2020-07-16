@@ -70,7 +70,7 @@ You can create copies of worksheets **within a single workbook**:
 Playing with data
 ------------------
 
-Accessing one cell
+访问单元格
 ++++++++++++++++++
 
 现在我们已经知道如何创建工作表，我们可以开始修改单元格内容了。
