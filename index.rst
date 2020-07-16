@@ -16,27 +16,19 @@ openpyxl - A Python library to read/write Excel 2010 xlsx/xlsm files
 Support
 -------
 
-This is an open source project, maintained by volunteers in their spare time.
-This may well mean that particular features or functions that you would like
-are missing. But things don't have to stay that way. You can contribute the
-project :doc:`development` yourself or contract a developer for particular
-features.
+这是一个由志愿者在业务时间维护的开源项目。这很可能意味着会缺少你想要的特定的功能。
+But things don't have to stay that way.
+你可以对这个项目进行贡献 :doc:`development` 或者和开发者联系来开发特定的功能。
+
+可以向`Clark Consulting & Research <http://www.clark-consulting.eu/>`_ 和
+`Adimian <http://www.adimian.com>`_ 寻求专业支持。欢迎为该项目捐款以支持进一步的开发和维护。
 
 
-Professional support for openpyxl is available from
-`Clark Consulting & Research <http://www.clark-consulting.eu/>`_ and
-`Adimian <http://www.adimian.com>`_. Donations to the project to support further
-development and maintenance are welcome.
+错误报告和功能请求可以使用 `issue tracker <https://bitbucket.org/openpyxl/openpyxl/issues>`_ 来提交。
+请提供错误的完整最终，并尽可能提交示例文件。如果出于保密原因您无法公开提供文件，请与开发人员联系。
 
 
-Bug reports and feature requests should be submitted using the `issue tracker
-<https://bitbucket.org/openpyxl/openpyxl/issues>`_. Please provide a full
-traceback of any error you see and if possible a sample file. If for reasons
-of confidentiality you are unable to make a file publicly available then
-contact of one the developers.
-
-
-How to Contribute
+如何贡献
 -----------------
 
 Any help will be greatly appreciated, just follow those steps:
@@ -88,11 +80,10 @@ There are several ways to contribute, even if you can't code (or can't code well
       2.7, 3.4, 3.5, 3.6 and 3.7
 
 
-Installation
+安装
 ------------
 
-Install openpyxl using pip. It is advisable to do this in a Python virtualenv
-without system packages::
+使用 pip 安装 openpyxl。建议在不带系统软件包的 Python virtualenv 中执行此操作::
 
     $ pip install openpyxl
 

@@ -1,7 +1,7 @@
 Simple usage
 ============
 
-Write a workbook
+写入工作表
 ----------------
 .. :: doctest
 
@@ -31,7 +31,7 @@ AA
 >>> wb.save(filename = dest_filename)
 
 
-Read an existing workbook
+读取已有的工作表
 -------------------------
 .. :: doctest
 
@@ -44,7 +44,7 @@ Read an existing workbook
 
 .. note ::
 
-    There are several flags that can be used in load_workbook.
+    在使用 `load_workbook` 函数时有几个可供选择。
 
     - `data_only` controls whether cells with formulae have either the
       formula (default) or the value stored the last time Excel read the sheet.
@@ -55,12 +55,10 @@ Read an existing workbook
 
 .. warning ::
 
-    openpyxl does currently not read all possible items in an Excel file so
-    images and charts will be lost from existing files if they are opened and
-    saved with the same name.
+    用openpyxl打开文件并进行保存会导致图片和图表的丢失，因为 openpyxl 无法读取 Excel 文件所有可能的项。
 
 
-Using number formats
+使用数字格式
 --------------------
 .. :: doctest
 
@@ -75,7 +73,7 @@ Using number formats
 'yyyy-mm-dd h:mm:ss'
 
 
-Using formulae
+使用公式
 --------------
 .. :: doctest
 
@@ -87,9 +85,9 @@ Using formulae
 >>> wb.save("formula.xlsx")
 
 .. warning::
-    NB you must use the English name for a function and function arguments *must* be separated by commas and not other punctuation such as semi-colons.
+    您必须为函数使用英文名称，并且函数参数必须用逗号分隔，而不能使用其他标点符号，例如分号。
 
-openpyxl never evaluates formula but it is possible to check the name of a formula:
+openpyxl 不会检查公式但可以检查公式的名称:
 
 .. :: doctest
 
@@ -97,9 +95,9 @@ openpyxl never evaluates formula but it is possible to check the name of a formu
 >>> "HEX2DEC" in FORMULAE
 True
 
-If you're trying to use a formula that isn't known this could be because you're using a formula that was not included in the initial specification. Such formulae must be prefixed with `_xlfn.` to work.
+如果你正在尝试使用一个未知的公式，可能是因为这公式未被包含在最初的规范中。这样的公式只有以 `_xlfn` 为前缀才能起作用。
 
-Merge / Unmerge cells
+合并 / 拆分单元格
 ---------------------
 
 When you merge cells all cells but the top-left one are **removed** from the
@@ -122,7 +120,7 @@ See :ref:`styling-merged-cells` for information on formatting merged cells.
 >>> ws.unmerge_cells(start_row=2, start_column=1, end_row=4, end_column=4)
 
 
-Inserting an image
+插入图像
 -------------------
 .. :: doctest
 
@@ -141,7 +139,7 @@ Inserting an image
 >>> wb.save('logo.xlsx')
 
 
-Fold (outline)
+隐藏
 ----------------------
 .. :: doctest
 
