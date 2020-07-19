@@ -49,7 +49,7 @@ But things don't have to stay that way.
     为了让大家知道你刚提交的功能是多么的棒，务必更新一下文档！
 
     6.
-    当以上步骤都完成之后，提一个 pull request（在**你**的 repository 页点击大大的 "pull request"按钮）然后等你的代码被review。如果以上步骤都完成了，那么就会合并到主 repository 。
+    当以上步骤都完成之后，提一个 pull request（在 **你** 的 repository 页点击大大的 "pull request"按钮）然后等你的代码被review。如果以上步骤都完成了，那么就会合并到主 repository 。
 
 
 更多信息请查询 :doc:`development`
