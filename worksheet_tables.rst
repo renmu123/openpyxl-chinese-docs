@@ -87,4 +87,4 @@
   >>> headings = ["Fruit", "2011", "2012", "2013", "2014"] # all values must be strings
   >>> table._initialise_columns()
   >>> for column, value in zip(table.tableColumns, headings):
-      column.name = value
+          column.name = value
