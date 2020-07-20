@@ -1,4 +1,4 @@
-openpyxl - A Python library to read/write Excel 2010 xlsx/xlsm files
+openpyxl - 读写Excel 2010 xlsx/xlsm 文件的Python库
 ===========================================================================
 
 
@@ -13,10 +13,10 @@ openpyxl - A Python library to read/write Excel 2010 xlsx/xlsm files
 .. include:: ../README.rst
 
 
-Support
+支持
 -------
 
-这是一个由志愿者在业务时间维护的开源项目。这很可能意味着会缺少你想要的特定的功能。
+这是一个由志愿者在业余时间维护的开源项目。这很可能意味着会缺少你想要的特定的功能。
 But things don't have to stay that way.
 你可以对这个项目进行贡献 :doc:`development` 或者和开发者联系来开发特定的功能。
 
@@ -31,53 +31,41 @@ But things don't have to stay that way.
 如何贡献
 -----------------
 
-Any help will be greatly appreciated, just follow those steps:
+只要遵从了以下步骤，我们欢迎任何帮助:
 
     1.
-    Please start a new fork (https://bitbucket.org/openpyxl/openpyxl/fork)
-    for each independent feature, don't try to fix all problems at the same
-    time, it's easier for those who will review and merge your changes ;-)
+    为了每一个独立的功能开了新的fork (https://bitbucket.org/openpyxl/openpyxl/fork) ,也不要想着同时解决所有的问题，这也能使为review和merge你的changes的人更加方便 ;-)
 
     2.
     Hack hack hack
 
     3.
-    Don't forget to add unit tests for your changes! (YES, even if it's a
-    one-liner, changes without tests will **not** be accepted.) There are plenty
-    of examples in the source if you lack know-how or inspiration.
+    不要忘了为你的修改添加单元测试！（是的，即使只有一行代码，没有单元测试也是不会被接受的哦。）如果不知道怎么做，可以参考源代码中大量的例子
 
     4.
-    If you added a whole new feature, or just improved something, you can
-    be proud of it, so add yourself to the AUTHORS file :-)
+    如果添加了一个完整的功能或者对某个功能做出了改进，你可以自豪地把自己加入作者文件中:-)
 
     5.
-    Let people know about the shiny thing you just implemented, update the
-    docs!
+    为了让大家知道你刚提交的功能是多么的棒，务必更新一下文档！
 
     6.
-    When it's done, just issue a pull request (click on the large "pull
-    request" button on *your* repository) and wait for your code to be
-    reviewed, and, if you followed all theses steps, merged into the main
-    repository.
+    当以上步骤都完成之后，提一个 pull request（在 **你** 的 repository 页点击大大的 "pull request"按钮）然后等你的代码被review。如果以上步骤都完成了，那么就会合并到主 repository 。
 
 
-For further information see :doc:`development`
+更多信息请查询 :doc:`development`
 
 
-Other ways to help
+其他提供帮助的方式
 ++++++++++++++++++
 
-There are several ways to contribute, even if you can't code (or can't code well):
+即使你不会写代码（或者代码写得不是很好），也有多种方式来作出贡献
 
-    * triaging bugs on the bug tracker: closing bugs that have already been
-      closed, are not relevant, cannot be reproduced, ...
+    * 为 bug 追踪器（bug tracker）进行分流: 关闭已经解决的，无关的，不能复现的bug
 
-    * updating documentation in virtually every area: many large features have
-      been added (mainly about charts and images at the moment) but without any
-      documentation, it's pretty hard to do anything with it
+    * 对几乎每个方面的文档进行更新: 增加了大量大型的特性（主要是图表和图像）但是没有文档，因此很难用新特性来做点什么
 
-    * proposing compatibility fixes for different versions of Python: we support
-      2.7, 3.4, 3.5, 3.6 and 3.7
+    * proposing compatibility fixes for different versions of Python: 我们支持
+      2.7, 3.4, 3.5, 3.6 和 3.7
 
 
 安装
@@ -89,20 +77,17 @@ There are several ways to contribute, even if you can't code (or can't code well
 
 .. note::
 
-    There is support for the popular `lxml`_ library which will be used if it
-    is installed. This is particular useful when creating large files.
+    支持流行的 `lxml`_ 库， 在创建大量文件的时候特别有用。
 
 .. _lxml: http://lxml.de
 
 .. warning::
 
-    To be able to include images (jpeg, png, bmp,...) into an openpyxl file,
-    you will also need the "pillow" library that can be installed with::
+    为了在 openpyxl 文件中包含（jpeg, png, bmp,...）等图片，你还需要安装 `pillow`::
 
     $ pip install pillow
 
-    or browse https://pypi.python.org/pypi/Pillow/, pick the latest version
-    and head to the bottom of the page for Windows binaries.
+    或者你也可以浏览 https://pypi.python.org/pypi/Pillow/, 选择最新版本或下拉到页面最后选择 Windows 二进制版
 
 
 Working with a checkout
@@ -120,7 +105,7 @@ Usage examples
 --------------
 
 
-Tutorial
+教程
 ++++++++
 
 .. toctree::
@@ -136,7 +121,7 @@ Cookbook
     usage
 
 
-Performance
+性能
 -----------
 
 .. toctree::
@@ -144,7 +129,7 @@ Performance
     performance
 
 
-Other topics
+其他主题
 ------------
 
     .. toctree::
@@ -230,7 +215,7 @@ Other topics
         protection
 
 
-Information for Developers
+开发者信息
 --------------------------
 
     .. toctree::
@@ -239,10 +224,10 @@ Information for Developers
         development
 
 
-API Documentation
+API 文档
 ------------------
 
-Key Classes
+关键类
 +++++++++++
 
 * :class:`openpyxl.workbook.workbook.Workbook`
@@ -250,7 +235,7 @@ Key Classes
 * :class:`openpyxl.cell.cell.Cell`
 
 
-Full API
+完整 API
 ++++++++
 
 .. toctree::
@@ -267,7 +252,7 @@ Indices and tables
 * :ref:`search`
 
 
-Release Notes
+发布说明
 =============
 
 .. toctree::
