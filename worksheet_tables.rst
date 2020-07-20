@@ -1,37 +1,34 @@
-Worksheet Tables
+工作簿表格
 ================
 
 
-Worksheet tables are references to groups of cells. This makes
-certain operations such as styling the cells in a table easier.
+工作表表格是对单元格组的引用。这使得某些操作（例如，对表格中的单元格进行样式设置）更加容易。
 
 
-Creating a table
+创建表格
 ----------------
 
 .. literalinclude:: table.py
 
-
-Table names must be unique within a workbook. By default tables are created with a header from the first row and filters for all the columns and table headers and column headings must always contain strings.
+在一个工作簿中表格名称必须是唯一的。默认情况下，表是从第一行的标题开始创建的，并且所有列的筛选以及表标题和列标题必须始终包含字符串。
 
 .. warning::
 
-  In write-only mode you must add column headings to tables manually and the values must always be the same as the values of the corresponding cells (ee below for an example of how to do this), otherwise Excel may consider the file invalid and remove the table.
+  在只写模式下，您必须手动将列标题添加到表格中，并且值必须始终与相应单元格的值相同（有关如何执行此操作的示例，请参见下面的例子），否则 Excel 可能会认为该文件无效并删除表格。
 
-Styles are managed using the the `TableStyleInfo` object. This allows you to
-stripe rows or columns and apply the different colour schemes.
+通过 `TableStyleInfo` 来管理样式。这允许你对行和列设置条纹以及应用不同的颜色主题。
 
 
-Working with Tables
+使用表格
 -------------------
 
-``ws.tables`` is a dictionary-like object of all the tables in a particular worksheet::
+``ws.tables`` 是特定工作簿下所有表格的 dictionary-like 对象::
 
   >>> ws.tables
   {"Table1",  <openpyxl.worksheet.table.Table object>}
 
 
-Get Table by name or range
+通过范围或者名称获取表格
 ++++++++++++++++++++++++++
 
 .. code::
@@ -41,7 +38,7 @@ Get Table by name or range
   >>> ws.tables["A1:D10"]
 
 
-Iterate through all tables in a worksheet
+遍历工作簿下所有的表格
 +++++++++++++++++++++++++++++++++++++++++
 
 .. code::
@@ -50,10 +47,10 @@ Iterate through all tables in a worksheet
   >>>    print(table)
 
 
-Get table name and range of all tables in a worksheet
+获取表名以及工作簿内所有表格的范围
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Returns a list of table name and their ranges.
+返回表格名和范围的列表
 
 .. code::
 
@@ -61,7 +58,7 @@ Returns a list of table name and their ranges.
   >>> [("Table1", "A1:D10")]
 
 
-Delete a table
+删除表格
 ++++++++++++++
 
 .. code::
@@ -69,7 +66,7 @@ Delete a table
   >>> del ws.tables["Table1"]
 
 
-The number of tables in a worksheet
+工作簿中的表格数量
 +++++++++++++++++++++++++++++++++++
 
 .. code::
@@ -78,14 +75,14 @@ The number of tables in a worksheet
   >>> 1
 
 
-Manually adding column headings
+手动添加表格表头
 -------------------------------
 
-In write-only mode you can either only add tables without headings::
+在只写模式下你可以添加没有表头的表格::
 
   >>> table.headerRowCount = False
 
-Or initialise the column headings manually::
+或者手动初始化表头::
 
   >>> headings = ["Fruit", "2011", "2012", "2013", "2014"] # all values must be strings
   >>> table._initialise_columns()
