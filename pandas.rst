@@ -1,22 +1,20 @@
-Working with Pandas and NumPy
+与 Pandas 和 NumPy 一起使用
 =============================
 
-openpyxl is able to work with the popular libraries `Pandas
-<http://pandas.pydata.org>`_ and `NumPy <http://numpy.org>`_
+openpyxl 可以与流行的 `Pandas <http://pandas.pydata.org>`_ 和 `NumPy <http://numpy.org>`_ 一起使用
 
 
-NumPy Support
+NumPy 支持
 -------------
 
-openpyxl has builtin support for the NumPy types float, integer and boolean.
+openpyxl 内置支持 NumPy 的float，integer 和 boolean 类型。
 DateTimes are supported using the Pandas' Timestamp type.
 
 
-Working with Pandas Dataframes
+和 Pandas Dataframes 一起使用
 ------------------------------
 
-The :func:`openpyxl.utils.dataframe.dataframe_to_rows` function provides a
-simple way to work with Pandas Dataframes::
+:func:`openpyxl.utils.dataframe.dataframe_to_rows` 提供了一种使用 Pandas Dataframes 的简单方法::
 
     from openpyxl.utils.dataframe import dataframe_to_rows
     wb = Workbook()
@@ -26,11 +24,9 @@ simple way to work with Pandas Dataframes::
         ws.append(r)
 
 
-While Pandas itself supports conversion to Excel, this gives client code
-additional flexibility including the ability to stream dataframes straight to
-files.
+虽然Pandas本身支持对Excel的转换，但这为客户端代码提供了更多的灵活性，包括直接将数据帧（stream dataframes）流传输到文件的能力。
 
-To convert a dataframe into a worksheet highlighting the header and index::
+将 dataframe 转换为工作簿时高亮表头和索引::
 
     wb = Workbook()
     ws = wb.active
@@ -43,7 +39,7 @@ To convert a dataframe into a worksheet highlighting the header and index::
 
     wb.save("pandas_openpyxl.xlsx")
 
-Alternatively, if you just want to convert the data you can use write-only mode::
+另外，如果你只想转换数据，你可以使用只写模式::
 
     from openpyxl.cell.cell import WriteOnlyCell
     wb = Workbook(write_only=True)
@@ -71,19 +67,17 @@ Alternatively, if you just want to convert the data you can use write-only mode:
     wb.save("openpyxl_stream.xlsx")
 
 
-This code will work just as well with a standard workbook.
+此代码和标准工作簿一起起作用。
 
 
-Converting a worksheet to a Dataframe
+将工作簿转换为 Dataframe（PS：样例文件可以参考df.to_excel()的文件）
 -------------------------------------
 
-To convert a worksheet to a Dataframe you can use the `values` property. This
-is very easy if the worksheet has no headers or indices::
+如果工作簿没有表头和索引很容易用 `values` 属性将一个工作簿转换为 Dataframe::
 
     df = DataFrame(ws.values)
 
-If the worksheet does have headers or indices, such as one created by Pandas,
-then a little more work is required::
+如果工作簿确实有表头和索引，例如 Pandas 创建的文件，那还要做更多的一些工作::
 
     from itertools import islice
     data = ws.values
