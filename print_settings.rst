@@ -1,10 +1,10 @@
-Print Settings
+打印设置
 ==============
 
-openpyxl provides reasonably full support for print settings.
+openpyxl 为打印设置提供合理的全面支持
 
 
-Edit Print Options
+编辑打印设置
 -------------------
 .. :: doctest
 
@@ -17,15 +17,13 @@ Edit Print Options
 >>> ws.print_options.verticalCentered = True
 
 
-Headers and Footers
+页眉页脚
 -------------------
 
-Headers and footers use their own formatting language. This is fully
-supported when writing them but, due to the complexity and the possibility of
-nesting, only partially when reading them. There is support for the font,
-size and color for a left, centre/center, or right element. Granular control
+页眉和页脚使用自己的格式语言。在编辑的时候完全可以支持但是由于于复杂和嵌套的可能性，在读取它们时仅部分支持。
+支持字体，大小和颜色，居左，居中或居右元素。粒度控制（突出显示单个单词）需要手动应用控制代码（ Granular control
 (highlighting individuals words) will require applying control codes
-manually.
+manually）
 
 
 .. :: doctest
@@ -41,14 +39,13 @@ manually.
 >>> ws.oddHeader.left.color = "CC3366"
 
 
-Also supported are `evenHeader` and `evenFooter` as well as `firstHeader` and `firstFooter`.
+也支持 `evenHeader` 和 `evenFooter` 以及 `firstHeader` 和 `firstFooter`.
 
 
-Add Print Titles
+增加打印标题
 ----------------
 
-You can print titles on every page to ensure that the data is properly
-labelled.
+您可以在每页上打印标题，以确保正确标记数据。
 
 .. :: doctest
 
@@ -61,10 +58,10 @@ labelled.
 >>> ws.print_title_rows = '1:1' # the first row
 
 
-Add a Print Area
+增加打印区域
 ----------------
 
-You can select a part of a worksheet as the only part that you want to print
+你可以只选择工作簿的一部分来作为打印区域
 
 .. :: doctest
 
