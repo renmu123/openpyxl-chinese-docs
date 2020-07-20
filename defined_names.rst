@@ -1,22 +1,19 @@
-Defined Names
+定义名称
 =============
 
 
-The specification has the following to say about defined names:
+该规范对定义的名称有以下说法:
 
-    "Defined names are descriptive text that is used to represents a cell, range
-    of cells, formula, or constant value."
+    "定义名称是用于表示单元格，区域，公式或常量值的描述性文本。"
 
-This means they are very loosely defined. They might contain a constant, a
-formula, a single cell reference, a range of cells or multiple ranges of
-cells across different worksheets. Or all of the above. They are defined
-globally for a workbook and accessed from the `defined_names` attribute.
+这意味着它们的定义是非常宽松的。它们可能包含一个常数，一个公式，一个单元格引用，一个区域或跨不同工作表的多个区域。
+它们在工作簿全局定义并可以通过 `defined_names` 属性进行访问。
 
 
-Sample use for ranges
+区域的使用示例
 ---------------------
 
-Accessing a range called "my_range"::
+访问名为 "my_range" 的区域::
 
     my_range = wb.defined_names['my_range']
     # if this contains a range of cells then the destinations attribute is not None
@@ -28,7 +25,7 @@ Accessing a range called "my_range"::
         cells.append(ws[coord])
 
 
-Creating new named ranges
+创建新的命名区域
 -------------------------
 
 .. testcode::
