@@ -22,7 +22,7 @@ formulas into their consitutuent tokens.） 用法如下:
            )       FUNC    CLOSE
            )       FUNC    CLOSE
 
-如上所示, tokens 有三个两人感兴趣的属性:
+如上所示, tokens 有三个令人感兴趣的属性:
 
 * ``.value``: The substring of the formula that produced this token
 
