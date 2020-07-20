@@ -1,18 +1,15 @@
-Comments
+注释
 ========
 
 .. warning::
 
-    Openpyxl currently supports the reading and writing of comment text only.
-    Formatting information is lost. Comment dimensions are lost upon reading,
-    but can be written. Comments are not currently supported if
-    `read_only=True` is used.
+    openpyxl 目前只支持读写文字注释。格式信息会丢失。在读取时，注释尺寸也会丢失，但是可以重新写入。注释目前不支持 `read_only=True` 模式下使用。
 
 
-Adding a comment to a cell
+为单元格添加注释
 --------------------------
 
-Comments have a text attribute and an author attribute, which must both be set
+注释的 text 和 author 是必填属性
 
 .. :: doctest
 
@@ -27,7 +24,7 @@ Comments have a text attribute and an author attribute, which must both be set
 >>> comment.author
 'Comment Author'
 
-If you assign the same comment to multiple cells then openpyxl will automatically create copies
+如果你为不同的单元格设置了相同的注释，那么 openpyxl 会自动进行复制
 
 .. :: doctest
 
@@ -44,19 +41,14 @@ True
 False
 
 
-Loading and saving comments
+加载和保存注释
 ----------------------------
 
-Comments present in a workbook when loaded are stored in the comment
-attribute of their respective cells automatically. Formatting information
-such as font size, bold and italics are lost, as are the original dimensions
-and position of the comment's container box.
+加载时工作簿中存在的注释会自动存储在其相应单元格的 comment 属性中。格式信息（如字体大小，粗体和斜体）以及注释的容器框的原始尺寸和位置都将丢失。
 
-Comments remaining in a workbook when it is saved are automatically saved to
-the workbook file.
+保存工作簿时保留在工作簿中的注释会自动保存到工作簿文件中。
 
-Comment dimensions can be specified for write-only. Comment dimension are
-in pixels.
+注释尺寸可以设定成只写。注释尺寸以像素为单位。
 
 .. :: doctest
 
@@ -76,8 +68,7 @@ in pixels.
 >>> wb.save('commented_book.xlsx')
 
 
-If needed, ``openpyxl.utils.units`` contains helper functions for converting
-from other measurements such as mm or points to pixels:
+如果有需要的话, ``openpyxl.utils.units`` 有将其他度量单位（mm，points）转换为像素的辅助函数:
 
 .. :: doctest
 
