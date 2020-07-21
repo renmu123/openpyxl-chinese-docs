@@ -1,10 +1,10 @@
-Validating cells
+数据验证
 ================
 
-Data validators can be applied to ranges of cells but are not enforced or evaluated. Ranges do not have to be contiguous: eg. "A1 B2:B5" is contains A1 and the cells B2 to B5 but not A2 or B2.
+数据验证器可以应用于范围单元格，但也不是强制和evaluated。范围不必是连续的：例如 “ A1 B2：B5”包含A1和单元格B2至B5，但不包含A2或B2。
 
 
-Examples
+例子
 --------
 
 .. :: doctest
@@ -48,29 +48,29 @@ True
 
 .. note ::
 
-    Validations without any cell ranges will be ignored when saving a workbook.
+    没有在任何单元格应用的验证将会在保存的时候被忽略。
 
-Other validation examples
+其他验证的例子
 -------------------------
 
-Any whole number:
+任何证书:
 ::
 
     dv = DataValidation(type="whole")
 
-Any whole number above 100:
+任何大于100的整数:
 ::
 
     dv = DataValidation(type="whole",
                         operator="greaterThan",
                         formula1=100)
 
-Any decimal number:
+任何小数:
 ::
 
     dv = DataValidation(type="decimal")
 
-Any decimal number between 0 and 1:
+任何在0至1之间的小数:
 ::
 
     dv = DataValidation(type="decimal",
@@ -78,24 +78,24 @@ Any decimal number between 0 and 1:
                         formula1=0,
                         formula2=1)
 
-Any date:
+任何日期:
 ::
 
     dv = DataValidation(type="date")
 
-or time:
+时间:
 ::
 
     dv = DataValidation(type="time")
 
-Any string at most 15 characters:
+15长度以下的文本:
 ::
 
     dv = DataValidation(type="textLength",
                         operator="lessThanOrEqual"),
                         formula1=15)
 
-Cell range validation:
+序列:
 ::
 
     from openpyxl.utils import quote_sheetname
@@ -103,7 +103,7 @@ Cell range validation:
                         formula1="{0}!$B$1:$B$10".format(quote_sheetname(sheetname))
                         )
 
-Custom rule:
+自定义规则:
 ::
 
     dv = DataValidation(type="custom",
