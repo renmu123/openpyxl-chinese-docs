@@ -1,11 +1,10 @@
-使用样式
+样式
 ===================
 
 介绍
 ------------
 
-Styles are used to change the look of your data while displayed on screen.
-They are also used to determine the formatting for numbers.
+样式用于在屏幕上显示时更改数据的外观。它们还用于确定数字的格式。
 
 样式可以应用于以下方面:
 
@@ -115,7 +114,7 @@ They are also used to determine the formatting for numbers.
 颜色
 -------
 
-可以通过三种方式：indexed, aRGB or theme 来设置字体、背景、边框等的颜色。
+可以通过三种方式：indexed, aRGB 或者 theme 来设置字体、背景、边框等的颜色。
 索引颜色（indexed colours）是旧版实现，颜色本身取决于工作簿或应用程序默认提供的索引。主题颜色可用于互补色，但也取决于工作簿中存在的主题。因此，建议使用aRGB颜色。
 
 .. :: doctest
@@ -135,7 +134,7 @@ aRGB 颜色
 >>> font.color.rgb
 '0000FF00'
 
-还支持传统索引颜色以及主题和色彩（ themes and tints）。
+还支持传统索引颜色以及主题和色彩（themes and tints）。
 
 >>> from openpyxl.styles.colors import Color
 >>> c = Color(indexed=32)
