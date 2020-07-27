@@ -1,11 +1,11 @@
-Charts
+图表
 ======
 
 
-Chart types
+图标类型
 -----------
 
-The following charts are available:
+以下图表是可用的:
 
 .. toctree::
 
@@ -21,11 +21,10 @@ The following charts are available:
     surface
 
 
-Creating a chart
+创建图表
 ----------------
 
-Charts are composed of at least one series of one or more data points. Series
-themselves are comprised of references to cell ranges.
+图表由至少一个系列的一个或多个数据点组成。系列由单元格范围的引用组成。
 
 .. :: doctest
 
@@ -43,14 +42,11 @@ themselves are comprised of references to cell ranges.
 >>> wb.save("SampleChart.xlsx")
 
 
-By default the top-left corner of a chart is anchored to cell E15 and the
-size is 15 x 7.5 cm (approximately 5 columns by 14 rows). This can be changed
-by setting the `anchor`, `width` and `height` properties of the chart. The
-actual size will depend on operating system and device. Other anchors are
-possible; see :mod:`openpyxl.drawing.spreadsheet_drawing` for further information.
+默认情况下，图表的左上角固定在单元格 E15 上，大小为 15 x 7.5厘米（大约5列乘14行）。可以通过设置图表的 `anchor`，`width` 和 `height` 属性来更改。
+实际大小将取决于操作系统和设备。其他锚点（anchors ）也是有可能的。更多资料请参考 `openpyxl.drawing.spreadsheet_drawing`。
 
 
-Working with axes
+使用轴
 -----------------
 
 .. toctree::
@@ -59,7 +55,7 @@ Working with axes
     secondary
 
 
-Change the chart layout
+更改图表布局
 -----------------------
 
 .. toctree::
@@ -67,7 +63,7 @@ Change the chart layout
     chart_layout
 
 
-Styling charts
+图表样式
 --------------
 
 .. toctree::
@@ -75,20 +71,20 @@ Styling charts
     pattern
 
 
-Advanced charts
+高级图表
 ---------------
 
-Charts can be combined to create new charts:
+图表能合并生成新的图表：
 
 .. toctree::
 
     gauge
 
 
-Using chartsheets
+使用 chartsheets
 -----------------
 
-Charts can be added to special worksheets called chartsheets:
+图表能被加入到一个称为 chartsheets 特殊工作簿中：
 
 .. toctree::
 
