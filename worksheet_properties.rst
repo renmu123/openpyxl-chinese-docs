@@ -1,11 +1,9 @@
-Additional Worksheet Properties
+其他工作表属性
 ===============================
 
-These are advanced properties for particular behaviours, the most used ones
-are the "fitTopage" page setup property and the tabColor that define the
-background color of the worksheet tab.
+有一些特定行为的高级属性，最常用的是页面设置参数（page setup property） `fitTopage` 和 定义工作表选项卡颜色的`tabColor`。
 
-Available properties for worksheets
+工作表可用属性
 -----------------------------------
 
 * "enableFormatConditionsCalculation"
@@ -18,13 +16,13 @@ Available properties for worksheets
 * "transitionEntry"
 * "tabColor"
 
-Available fields for page setup properties
+页面设置属性的可用字段
 ------------------------------------------
 
 "autoPageBreaks"
 "fitToPage"
 
-Available fields for outlines
+outlines的可用字段
 -----------------------------
 
 * "applyStyles"
@@ -32,12 +30,12 @@ Available fields for outlines
 * "summaryRight"
 * "showOutlineSymbols"
 
-see http://msdn.microsoft.com/en-us/library/documentformat.openxml.spreadsheet.sheetproperties%28v=office.14%29.aspx_ for details.
+更多信息请查询 http://msdn.microsoft.com/en-us/library/documentformat.openxml.spreadsheet.sheetproperties%28v=office.14%29.aspx_
 
 .. note::
-        By default, outline properties are intitialized so you can directly modify each of their 4 attributes, while page setup properties don't.
-        If you want modify the latter, you should first initialize a :class:`openpyxl.worksheet.properties.PageSetupProperties` object with the required parameters.
-        Once done, they can be directly modified by the routine later if needed.
+        默认情况下，会对 `outline` 属性进行初始化，因此您可以直接修改它们的 4 个属性，而页面设置属性不一样。
+        如果要修改后者，首先要必要的参数初始化对 `openpyxl.worksheet.properties.PageSetupProperties` 对象进行初始化。
+        一旦完成，可以在以后需要时通过例程直接对其进行修改。
 
 
 .. :: doctest
