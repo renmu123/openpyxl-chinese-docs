@@ -24,7 +24,7 @@
 模式
 ++++
 
-除了大小和位置外，相关属性的模式也可以设置为 `factor` 或 `edge`。Factor is the default:
+除了大小和位置外，相关属性的模式也可以设置为 `factor` 或 `edge`。默认值为 `factor`:
 
 .. code::
 
