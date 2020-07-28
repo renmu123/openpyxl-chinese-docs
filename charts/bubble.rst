@@ -1,12 +1,12 @@
-Bubble Charts
+气泡图
 =============
 
-Bubble charts are similar to scatter charts but use a third dimension to determine the size of the bubbles.
-Charts can include multiple series.
+气泡图类似于散点图但使用第三维来决定气泡的大小，可以包含多个图例。
 
 .. literalinclude:: bubble.py
 
 
-This will produce a bubble chart with two series and should look something like this::
+这会产生一个有两个图例的气泡图，并且样式如下
 
-.. image:: bubble.png  :alt: "Sample bubble chart"
+.. image:: bubble.png
+   :alt: "Sample bubble chart"
