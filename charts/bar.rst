@@ -1,21 +1,20 @@
-Bar and Column Charts
+条形图和柱状图
 =====================
 
-In bar charts values are plotted as either horizontal bars or vertical columns.
+在条形图中，值被绘制为水平条或垂直列。（In bar charts values are plotted as either horizontal bars or vertical columns.）
 
-Vertical, Horizontal and Stacked Bar Charts
+垂直水平和堆叠条形图
 -------------------------------------------
 
 .. note::
 
-   The following settings affect the different chart types.
+   以下设置会影响不同的图表类型。
 
-   Switch between vertical and horizontal bar charts by setting `type` to
-   `col` or `bar` respectively.
+   通过分别将 `type` 设置为 `col` 或 `bar`，可以柱状和水平条形图之间切换。
 
-   When using stacked charts the `overlap` needs to be set to 100.
+   使用堆叠图表时，需要将 `overlap` 属性设置为100。
 
-   If bars are horizontal, x and y axes are reversed.
+   如果条是水平的，则 x 和 y 轴将反转。
 
 
 .. image:: bar.png
@@ -24,18 +23,18 @@ Vertical, Horizontal and Stacked Bar Charts
 
 .. literalinclude:: bar.py
 
-This will produce four charts illustrating the various possibilities.
+以上创建了四个图表，展示了各种可能性。
 
 
-3D Bar Charts
+三维条形图
 -------------
 
-You can also create 3D bar charts
+你也能创建三维条形图
 
 .. literalinclude:: bar3d.py
 
 
-This produces a simple 3D bar chart
+这样能创建一个简单的三维条形图
 
 .. image:: bar3D.png
    :alt: "Sample 3D bar chart"
