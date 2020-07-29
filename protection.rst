@@ -1,52 +1,42 @@
-Protection
+保护
 ==========
 
 .. warning::
 
-    Password protecting a workbook or worksheet only provides a quite basic level of security.
-    The data is not encrypted, so can be modified by any number of freely available tools. In
-    fact the specification states: "Worksheet or workbook element protection should not be
-    confused with file security. It is meant to make your workbook safe from unintentional
-    modification, and cannot protect it from malicious modification."
+    工作簿或工作表的密码保护仅提供了十分基础的安全。数据未进行加密，所以可以使用各种免费工具进行修改。
+    实际上，规范指出：工作表或工作簿的保护不应该与文件安全性混淆。这是为了保护你的工作簿免受意外修改的影响，并不能保护免受恶意修改的影响。
 
-Openpyxl provides support for protecting a workbook and worksheet from modification. The Open XML
-"Legacy Password Hash Algorithm" is used to generate hashed password values unless another
-algorithm is explicitly configured.
+Openpyxl 支持保护工作簿和工作表不被修改。除非指定明确算法，否则将使用 Open XML "Legacy Password Hash Algorithm" 来生成哈希密码值。
 
-Workbook Protection
+工作簿保护
 -------------------
 
-To prevent other users from viewing hidden worksheets, adding, moving, deleting, or hiding worksheets, and
-renaming worksheets, you can protect the structure of your workbook with a password. The password can be
-set using the :func:`openpyxl.workbook.protection.WorkbookProtection.workbookPassword` property ::
+为防止其他用户查看隐藏的工作表、添加、移动、删除或隐藏工作表以及重命名工作表，可以使用密码保护工作簿的结构。
+可以使用 ``openpyxl.workbook.protection.WorkbookProtection.workbookPassword`` 属性设置密码::
 
     >>> wb.security.workbookPassword = '...'
     >>> wb.security.lockStructure = True
 
 
-Similarly removing change tracking and change history from a shared workbook can be prevented by setting
-another password. This password can be set using the
-:func:`openpyxl.workbook.protection.WorkbookProtection.revisionsPassword` property ::
+同样，可以通过设置另一个密码来防止从共享工作簿中删除更改跟踪和更改历史记录。
+可以使用 ``openpyxl.workbook.protection.WorkbookProtection.revisionsPassword`` 属性设置密码::
 
     >>> wb.security.revisionsPassword = '...'
 
-Other properties on the :class:`openpyxl.workbook.protection.WorkbookProtection` object control exactly what
-restrictions are in place, but these will only be enforced if the appropriate password is set.
+ :class:`openpyxl.workbook.protection.WorkbookProtection` 对象上的其他属性可以精确控制所设置的限制（restrictions are in place），但是只有设置密码后，这些属性才能生效。
 
-Specific setter functions are provided if you need to set the raw password value without using the
-default hashing algorithm - e.g. ::
+
+如果需要设置原始密码值而非使用默认哈希算法，我们也提供特定的设置函数-例如::
 
     hashed_password = ...
     wb.security.set_workbook_password(hashed_password, already_hashed=True)
 
 
-Worksheet Protection
+工作表保护
 --------------------
 
-Various aspects of a worksheet can also be locked by setting attributes on the
-:class:`openpyxl.worksheet.protection.SheetProtection` object. Unlike workbook protection, sheet
-protection may be enabled with or without using a password. Sheet protection is enabled using the
-:attr:`openpxyl.worksheet.protection.SheetProtection.sheet` attribute or calling `enable()` or `disable()`::
+也可以通过在 :class:`openpyxl.worksheet.protection.SheetProtection` 对象上设置属性来锁定工作表。
+与工作簿保护不同，可以使用或不使用密码来启用工作表保护。使用 :class:`openpyxl.worksheet.protection.SheetProtection.sheet` 属性或调用 enable() 或disable() 俩启用工作表保护::
 
     >>> ws = wb.active
     >>> ws.protection.sheet = True
@@ -54,9 +44,9 @@ protection may be enabled with or without using a password. Sheet protection is 
     >>> ws.protection.disable()
 
 
-If no password is specified, users can disable configured sheet protection without specifying a password.
-Otherwise they must supply a password to change configured protections. The password is set using
-the :func:`openpxyl.worksheet.protection.SheetProtection.password` property ::
+如果未设置密码，那么用户不需要密码即可禁用工作表保护。否则，他们必要提供密码才能修改保护配置。
+使用 :func:`openpxyl.worksheet.protection.SheetProtection.password` 设置密码::
 
     >>> ws = wb.active
     >>> ws.protection.password = '...'
+
