@@ -26,16 +26,12 @@
 :class:`openpyxl.cell._read_only.ReadOnlyCell`.
 
 
-Worksheet dimensions
+工作表尺寸（dimensions）
 ++++++++++++++++++++
 
-Read-only mode relies on applications and libraries that created the file
-providing correct information about the worksheets, specifically the used
-part of it, known as the dimensions. Some applications set this incorrectly.
-You can check the apparent dimensions of a worksheet using
-`ws.calculate_dimension()`. If this returns a range that you know is
-incorrect, say `A1:A1` then simply resetting the max_row and max_column
-attributes should allow you to work with the file::
+只读模式依赖创建文件的应用以及库提供工作表的正确信息，尤其是文件的已使用部分，称之为尺寸（dimensions）。
+一些应用汇进行设置错误。可以使用 `ws.calculate_dimension()` 函数来检查工作表的尺寸（dimensions）。
+如果返回和范围和你知道的不一样，比如说 `A1:A1` ，你可以简单重置 `max_row` 和 `max_column` 属性，即可使用该文件::
 
     ws.reset_dimensions()
 
@@ -59,7 +55,7 @@ attributes should allow you to work with the file::
 >>> # save the file
 >>> wb.save('new_big_file.xlsx') # doctest: +SKIP
 
-如果你想要单元格带格式或者注释可以使用 :func:`openpyxl.cell.WriteOnlyCell`
+如果你想要带有样式或者注释的单元格可以使用 :func:`openpyxl.cell.WriteOnlyCell`
 
 .. :: doctest
 
@@ -76,7 +72,7 @@ attributes should allow you to work with the file::
 >>> wb.save('write_only_file.xlsx')
 
 
-这会创建一个只有一张工作表的只写工作簿，写入三个单元格的一行：一个带有自定义字体和评注释的文字单元格，一个浮点数单元格和一个空单元格（一定会被丢弃）。
+以上会创建只有一张工作表的只写工作簿，一行写入（append）三个单元格：一个带有自定义字体和注释的文字单元格，一个浮点数单元格和一个空单元格（一定会被丢弃）。
 
 .. warning::
 
@@ -86,7 +82,7 @@ attributes should allow you to work with the file::
 
     * 可以导出不限量的数据（即使超过 Excel 的处理上限），同时内存使用量小于10Mb。
 
-    * 一个只写工作簿只能保存一次。在保存后文件后在尝试进行保存获取 append() 会引发 :class:`openpyxl.utils.exceptions.WorkbookAlreadySaved` 错误。
+    * 一个只写工作簿只能保存一次。之后如果任何尝试保存和添加数据（append()）的操作都会会引发 :class:`openpyxl.utils.exceptions.WorkbookAlreadySaved` 错误。
 
     * Everything that appears in the file before the actual cell data must be created
       before cells are added because it must written to the file before then.
