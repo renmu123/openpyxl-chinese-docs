@@ -1,15 +1,17 @@
-Conditional Formatting
+条件格式
 ======================
 
-Excel supports three different types of conditional formatting: builtins, standard and custom. Builtins combine specific rules with predefined styles. Standard conditional formats combine specific rules with custom formatting. In additional it is possible to define custom formulae for applying custom formats using differential styles.
+Excel 支持三种类型的条件格式：内置、标准和自定义
+内建条件格式将特定规则与预定义样式结合在一起。
+标准条件格式将特定规则与自定义格式结合在一起。
+In additional it is possible to define custom formulae for applying custom formats using differential styles.
 
 .. note::
 
-  The syntax for the different rules varies so much that it is not
-  possible for openpyxl to know whether a rule makes sense or not.
+  不同规则的语法差异很大，以至于 openpyxl 不知道规则是否有意义。
 
 
-The basic syntax for creating a formatting rule is:
+创建条件格式规则的基本语法为：
 
 .. doctest
 
@@ -19,26 +21,27 @@ The basic syntax for creating a formatting rule is:
 >>> dxf = DifferentialStyle(font=Font(bold=True), fill=PatternFill(start_color='EE1111', end_color='EE1111'))
 >>> rule = Rule(type='cellIs', dxf=dxf, formula=["10"])
 
-Because the signatures for some rules can be quite verbose there are also some convenience factories for creating them.
+由于某些规则的签名可能非常冗长，因此也有一些方便的工厂（factories）来创建它们。
 
-Builtin formats
+内置格式
 ---------------
 
-The builtins conditional formats are:
+内置格式有：
 
-  * ColorScale
-  * IconSet
-  * DataBar
+  * 色阶（ColorScale）
+  * 图表集（IconSet）
+  * 数据条（DataBar）
 
-Builtin formats contain a sequence of formatting settings which combine a type with an integer for comparison. Possible types are: `'num', 'percent', 'max', 'min', 'formula', 'percentile'`.
+Builtin formats contain a sequence of formatting settings which combine a type with an integer for comparison.
+可能的类型有：`'num', 'percent', 'max', 'min', 'formula', 'percentile'`。
 
 
-ColorScale
+色阶
 ++++++++++
 
-You can have color scales with 2 or 3 colors. 2 color scales produce a gradient from one color to another; 3 color scales use an additional color for 2 gradients.
+你可以使用 2 或 3 种颜色的色阶。2 种色阶产生一种颜色到另一种颜色的渐变；3 种颜色色阶会将 1 种颜色用于 2 个颜色的渐变。
 
-The full syntax for creating a ColorScale rule is:
+创建色阶的完整规则为:
 
 .. doctest
 
@@ -57,7 +60,7 @@ The full syntax for creating a ColorScale rule is:
 >>> from openpyxl.formatting.rule import Rule
 >>> rule = Rule(type='colorScale', colorScale=cs3)
 
-There is a convenience function for creating ColorScale rules
+有一个方便创建色阶规则的函数：
 
 .. doctest
 
@@ -67,12 +70,12 @@ There is a convenience function for creating ColorScale rules
 ...                       end_type='percentile', end_value=90, end_color='FF00AA00')
 
 
-IconSet
+图标集
 +++++++
 
-Choose from the following set of icons: `'3Arrows', '3ArrowsGray', '3Flags', '3TrafficLights1', '3TrafficLights2', '3Signs', '3Symbols', '3Symbols2', '4Arrows', '4ArrowsGray', '4RedToBlack', '4Rating', '4TrafficLights', '5Arrows', '5ArrowsGray', '5Rating', '5Quarters'`
+从以下图标中进行选择: `'3Arrows', '3ArrowsGray', '3Flags', '3TrafficLights1', '3TrafficLights2', '3Signs', '3Symbols', '3Symbols2', '4Arrows', '4ArrowsGray', '4RedToBlack', '4Rating', '4TrafficLights', '5Arrows', '5ArrowsGray', '5Rating', '5Quarters'`
 
-The full syntax for creating an IconSet rule is:
+创建图表集完整规则为：
 
 .. doctest
 
@@ -85,7 +88,7 @@ The full syntax for creating an IconSet rule is:
 >>> from openpyxl.formatting.rule import Rule
 >>> rule = Rule(type='iconSet', iconSet=iconset)
 
-There is a convenience function for creating IconSet rules:
+有一个方便创建色阶图表集规则的函数：
 
 .. doctest
 
@@ -93,12 +96,12 @@ There is a convenience function for creating IconSet rules:
 >>> rule = IconSetRule('5Arrows', 'percent', [10, 20, 30, 40, 50], showValue=None, percent=None, reverse=None)
 
 
-DataBar
+数据条
 +++++++
 
-Currently, openpyxl supports the DataBars as defined in the original specification. Borders and directions were added in a later extension.
+目前，openpyxl 支持原始规范中定义的数据条。之后的扩展中添加了边框和方向。
 
-The full syntax for creating a DataBar rule is:
+完整创建数据条的规则为：
 
 .. doctest
 
@@ -110,7 +113,7 @@ The full syntax for creating a DataBar rule is:
 >>> from openpyxl.formatting.rule import Rule
 >>> rule = Rule(type='dataBar', dataBar=data_bar)
 
-There is a convenience function for creating DataBar rules:
+有一个方便创建数据条规则的函数：
 
 .. doctest
 
@@ -119,16 +122,16 @@ There is a convenience function for creating DataBar rules:
 ...                    color="FF638EC6", showValue="None", minLength=None, maxLength=None)
 
 
-Standard conditional formats
+标准条件格式
 ----------------------------
 
-The standard conditional formats are:
+标准条件格式为：
 
-  * Average
-  * Percent
-  * Unique or duplicate
-  * Value
-  * Rank
+  * 平均值（Average）
+  * 百分比（Percent）
+  * 唯一值或重复值（Unique or duplicate）
+  * 值（Value）
+  * 排名（Rank）
 
 .. doctest
 
@@ -189,10 +192,10 @@ The standard conditional formats are:
 >>> wb.save("test.xlsx")
 
 
-Formatting Entire Rows
+条件格式应用在全部行
 ----------------------
 
-Sometimes you want to apply a conditional format to more than one cell, say a row of cells which contain a particular value.
+有时你想将条件格式应用于多个单元格，例如一行包含特定值的一些单元格。
 
 >>> ws.append(['Software', 'Developer', 'Version'])
 >>> ws.append(['Excel', 'Microsoft', '2016'])
@@ -200,7 +203,7 @@ Sometimes you want to apply a conditional format to more than one cell, say a ro
 >>> ws.append(['OpenOffice', 'Apache', '4.1.4'])
 >>> ws.append(['Word', 'Microsoft', '2010'])
 
-We want to higlight the rows where the developer is Microsoft. We do this by creating an expression rule and using a formula to identify which rows contain software developed by Microsoft.
+我们要突出开发人员是 Microsoft 的行。我们通过创建表达式规则并使用公式来识别哪些行包含了 Microsoft 开发的 Software。
 
 >>> red_fill = PatternFill(bgColor="FFC7CE")
 >>> dxf = DifferentialStyle(fill=red_fill)
@@ -209,5 +212,5 @@ We want to higlight the rows where the developer is Microsoft. We do this by cre
 >>> ws.conditional_formatting.add("A1:C10", r)
 
 .. note::
-
-    The formula uses an **absolute** reference to the column referred to, ``B`` in this case; but a **relative** row number, in this case ``1`` to the range over which the format is applied. It can be tricky to get this right but the rule can be adjusted even after it has been added to the worksheet's condidtional format collection.
+    在这种情况下，该公式使用**绝对引用** B 列，以及**相对引用**行号，在这种情况下, ``1`` 是行号相对于应用格式的范围。
+    做到这一点可能很棘手，但是即使已将规则添加到工作表的条件格式集合中，也可以对其进行调整。
