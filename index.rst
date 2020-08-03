@@ -1,4 +1,4 @@
-openpyxl - 读写Excel 2010 xlsx/xlsm 文件的Python库
+openpyxl - 读/写 Excel 2010 xlsx/xlsm 文件的 Python 库
 ===========================================================================
 
 
