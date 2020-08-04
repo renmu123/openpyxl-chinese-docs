@@ -1,58 +1,41 @@
 性能
 ===========
 
-openpyxl attempts to balance functionality and performance. Where in doubt,
-we have focused on functionality over optimisation: performance tweaks are
-easier once an API has been established. Memory use is fairly high in
-comparison with other libraries and applications and is approximately 50
-times the original file size, e.g. 2.5 GB for a 50 MB Excel file. As many use
-cases involve either only reading or writing files, the :doc:`optimized`
-modes mean this is less of a problem.
+openpyxl 尝试来平衡功能与性能。如果有疑问，我们把重点放在功能而非性能上：一旦建立了 API ，性能调整将变得更简单。
+与其他库和应用程序相比，内存使用率很高，约为原始文件大小的50倍，例如 50 MB 的 Excel 文件为内存使用约为 2.5 GB。
+由于许多用例只涉及读取或写入文件，the :doc:`optimized` modes mean this is less of a problem.
 
 
 基准测试
 ----------
 
-All benchmarks are synthetic and extremely dependent upon the hardware but
-they can nevertheless give an indication.
+所有基准都是综合性的，并且高度依赖于硬件，但是它们仍然可以提供说明（indication）。
 
 
-写性能
+写入性能
 +++++++++++++++++
 
-The `benchmark code
+`benchmark code
 <https://bitbucket.org/snippets/charlie_x/5edaGE/write-performance-benchmark>`_
-can be adjusted to use more sheets and adjust the proportion of data that is
-strings. Because the version of Python being used can also significantly
-affect performance, a `driver script
-<https://bitbucket.org/snippets/charlie_x/gebj7M/drive-a-script-through-different-python>`_
-can also be used to test with different Python versions with a tox
-environment.
+可以调整使用更多的工作表以及数据中字符串的比例。由于不同版本的 Python 也会对性能有着显著影响，所以使用了 `driver script
+<https://bitbucket.org/snippets/charlie_x/gebj7M/drive-a-script-through-different-python>`_ 对 tox 环境下不同的版本 Python 进行测试。
 
-Performance is compared with the excellent alternative library xlsxwriter
+性能与出色的替代库 xlsxwriter 进行了比较
 
 .. literalinclude:: write_performance.txt
 
 
-读性能
+读取性能
 ++++++++++++++++
 
-Performance is measured using a file provided with a previous `bug report
-<https://bitbucket.org/openpyxl/openpyxl/issues/494/>`_ and compared with the
-older xlrd library. xlrd is primarily for the older BIFF file format of .XLS
-files but it does have limited support for XLSX.
+读取性能测试使用了 `bug report <https://bitbucket.org/openpyxl/openpyxl/issues/494/>`_ 提供的文件，和早期的 xlrd 库进行比较。
+xlrd 主要用于 .XLS 文件较旧的 BIFF 文件格式，它对 XLSX 文件支持有限。
 
-The code for the `benchmark
-<https://bitbucket.org/snippets/openpyxl/Ee9zqo>`_ shows the importance of
-choosing the right options when working with a file. In this case disabling
-external links stops openpyxl opening cached copies of the linked worksheets.
+`基准测试 <https://bitbucket.org/snippets/openpyxl/Ee9zqo>`_ 代码显示了处理文件时正确选项的重要性。
+在这种情况下，禁用外部链接将让 openpyxl 停止打开链接工作表的缓存副本。
 
-One major difference between the libraries is that openpyxl's read-only mode
-opens a workbook almost immediately making it suitable for multiple
-processes, this also readuces memory use significantly. xlrd does also not
-automatically convert dates and times into Python datetimes, though it does
-annotate cells accordingly but to do this in client code significantly
-reduces performance.
+两个库的一个主要区别是 openpyxl 的只读模式可以快速打开工作簿，使其适用于多进程，这也大大减少了内存的使用。
+xlrd 也不会自动将日期和时间转换为 Python 的 datetime，尽管它会相应地注释单元格（annotate cells），但是在客户端代码中这样做会大大降低性能。
 
 
 .. literalinclude:: read_performance.txt
@@ -61,7 +44,7 @@ reduces performance.
 并行
 +++++++++++++++
 
-读取工作表是CPU密集限制了从并行中获取好处。但是，如果你对dump工作表内容感兴趣你可以使用 openpyxl 的只读模式打开复数工作表来利用多核CPU
+读取工作表会占用大量 CPU 从而限制了从并行中获取好处。但是，如果你主要对 dump 工作表内容感兴趣，你可以使用 openpyxl 的只读模式打开复数工作表来利用多核 CPU。
 
 `Sample code <https://bitbucket.org/snippets/openpyxl/AexG8E>`_ using the
 same source file as for read performance shows that performance scales
