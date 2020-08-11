@@ -1,8 +1,7 @@
-Doughnut Charts
+旭日图
 ---------------
 
-Doughnut charts are similar to pie charts except that they use a ring instead
-of a circle. They can also plot several series of data as concentric rings.
+旭日图和饼图相似，不同之处在于使用的是圆形还是圆环。他们还可以将多个系列的数据绘制为同心环。
 
 
 .. literalinclude:: doughnut.py
