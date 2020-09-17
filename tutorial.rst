@@ -15,8 +15,7 @@
 
 .. note::
 
-    This is set to 0 by default. Unless you modify its value, you will always
-    get the first worksheet by using this method.
+    这个值默认为 0。除非你修改了这个值，不然这个方法会一直获取第一个工作表。
 
 你可以使用 `Workbook.create_sheet` 方法来创建新的工作簿::
 
@@ -48,7 +47,7 @@
     >>> for sheet in wb:
     ...     print(sheet.title)
 
-You can create copies of worksheets **within a single workbook**:
+你可以**一个工作表**中创建一个工作簿的复制:
 
 `Workbook.copy_worksheet` method::
 
@@ -57,14 +56,10 @@ You can create copies of worksheets **within a single workbook**:
 
 .. note::
 
-    Only cells (including values, styles, hyperlinks and comments) and
-    certain worksheet attribues (including dimensions, format and
-    properties) are copied. All other workbook / worksheet attributes
-    are not copied - e.g. Images, Charts.
+    只有单元格（包含值、样式、超链接和注释）以及确定的工作簿属性（包含尺寸、格式和属性）会被复制。
+    其余的工作表/工作簿属性都不会被复制，例如：文件、图表。
 
-    You also **cannot** copy worksheets between workbooks. You cannot copy
-    a worksheet if the workbook is open in `read-only` or `write-only`
-    mode.
+    你也**不能**跨工作表复制工作簿。在工作表以 `read-only` 或 `write_only` 模式打开时也无法复制。
 
 
 Playing with data
@@ -91,14 +86,11 @@ Playing with data
 
 .. note::
 
-    When a worksheet is created in memory, it contains no `cells`. They are
-    created when first accessed.
-    当工作薄在内存中被创建之后，其中没有单元格，只有在被第一次访问的时候才会创建
+    当工作薄在内存中被创建之后并没有单元格 `cells` ，单元格只有在被第一次访问(access)的时候才会创建
 
 .. warning::
 
-    Because of this feature, scrolling through cells instead of accessing them
-    directly will create them all in memory, even if you don't assign them a value.
+    由于这个特性，即使你未对单元格赋值，滚动浏览而非直接访问时也会在内存中直接创建。
 
     Something like ::
 
@@ -238,34 +230,13 @@ Values only
 
 .. warning::
 
-   这个操作将会没有警告的覆盖已存在的we年
+   这个操作将会无警告直接覆盖已有文件
 
 .. note::
 
-    The filename extension is not forced to be xlsx or xlsm, although you might have
-    some trouble opening it directly with another application if you don't
-    use an official extension.
+    文件名后缀并不强制为 xlsx 或 xlsm，但是如果你没使用官方后缀名会在用其他的应用打开的时候会遇到一些麻烦。
 
-    As OOXML files are basically ZIP files, you can also  open it with your
-    favourite ZIP archive manager.
-
-
-保存成流
-++++++++++++++++++
-
-If you want to save the file to a stream, e.g. when using a web application
-such as Pyramid, Flask or Django then you can simply provide a
-:func:`NamedTemporaryFile`::
-
-
-    >>> from tempfile import NamedTemporaryFile
-    >>> from openpyxl import Workbook
-    >>> wb = Workbook()
-    >>> with NamedTemporaryFile() as tmp:
-            wb.save(tmp.name)
-            tmp.seek(0)
-            stream = tmp.read()
-
+    由于 OOXML 文件基本上都是 ZIP 文件，你也可以用你喜欢的 ZIP 压缩管理器打开
 
 你可以指定属性 `template=True` 将工作表保存为模板::
 
@@ -281,32 +252,46 @@ such as Pyramid, Flask or Django then you can simply provide a
 
 .. warning::
 
-    You should monitor the data attributes and document extensions
-    for saving documents in the document templates and vice versa,
-    otherwise the result table engine can not open the document.
+    你应当在保存模板文档时监视数据的属性和我文档拓展名，否则引擎可能会无法打开文档。
 
 .. note::
 
     以下操作将会失败::
 
     >>> wb = load_workbook('document.xlsx')
-    >>> # Need to save with the extension *.xlsx
+    >>> # 需要保存为 *.xlsx 拓展名
     >>> wb.save('new_document.xlsm')
-    >>> # MS Excel can't open the document
+    >>> # 微软 Excel 无法打开这个文档
     >>>
     >>> # or
     >>>
-    >>> # Need specify attribute keep_vba=True
+    >>> # 需要执行 keep_vba=True
     >>> wb = load_workbook('document.xlsm')
     >>> wb.save('new_document.xlsm')
-    >>> # MS Excel will not open the document
+    >>> # 微软 Excel 将不会打开这个文档
     >>>
     >>> # or
     >>>
     >>> wb = load_workbook('document.xltm', keep_vba=True)
-    >>> # If we need a template document, then we must specify extension as *.xltm.
+    >>> # 如果需要一个模板文档，需要将拓展名指定为 *.xltm.
     >>> wb.save('new_document.xlsm')
-    >>> # MS Excel will not open the document
+    >>> # 微软 Excel 将不会打开这个文档
+
+
+保存成流(stream)
+++++++++++++++++++
+
+如果你想把文件保存成流。例如当使用 Pyramid, Flask 或 Django 等 web 应用程序时，你可以提供 :func:`NamedTemporaryFile`::
+
+
+    >>> from tempfile import NamedTemporaryFile
+    >>> from openpyxl import Workbook
+    >>> wb = Workbook()
+    >>> with NamedTemporaryFile() as tmp:
+            wb.save(tmp.name)
+            tmp.seek(0)
+            stream = tmp.read()
+
 
 
 从文件加载
@@ -319,4 +304,4 @@ such as Pyramid, Flask or Django then you can simply provide a
     >>> print wb2.sheetnames
     ['Sheet2', 'New Title', 'Sheet1']
 
-This ends the tutorial for now, you can proceed to the :doc:`usage` section
+教程到这里就结束了, 你可以继续 :doc:`usage` 部分
