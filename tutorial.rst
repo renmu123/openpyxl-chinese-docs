@@ -4,7 +4,7 @@
 新建工作表
 -----------------
 
-无须再文件系统中创建文件即可开始使用openpyxl。只要导入 `Workbook` 类就可以开始工作了::
+无须在文件系统中创建文件即可开始使用openpyxl。只要导入 `Workbook` 类就可以开始工作了::
 
     >>> from openpyxl import Workbook
     >>> wb = Workbook()
@@ -25,7 +25,7 @@
     # or
     >>> ws3 = wb.create_sheet("Mysheet", -1) # insert at the penultimate position
 
-工作薄在创建时会自动生成一个名字，以(Sheet, Sheet1, Sheet2, ...)来进行命名。你也可以通过 `Worksheet.title` 属性来改名::
+工作薄在创建时会自动生成一个名字，以(Sheet, Sheet1, Sheet2, ...)来进行命名。你也可以通过 `Worksheet.title` 属性来修改命名::
 
     ws.title = "New Title"
 
@@ -47,7 +47,7 @@
     >>> for sheet in wb:
     ...     print(sheet.title)
 
-你可以**一个工作表**中创建一个工作簿的复制:
+你可以在**一个工作表**中创建一个工作簿的复制:
 
 `Workbook.copy_worksheet` method::
 
@@ -59,7 +59,7 @@
     只有单元格（包含值、样式、超链接和注释）以及确定的工作簿属性（包含尺寸、格式和属性）会被复制。
     其余的工作表/工作簿属性都不会被复制，例如：文件、图表。
 
-    你也**不能**跨工作表复制工作簿。在工作表以 `read-only` 或 `write_only` 模式打开时也无法复制。
+    你也**不能**跨工作表复制工作簿。工作表以 `read-only` 或 `write_only` 模式打开时也无法复制。
 
 
 Playing with data
@@ -68,7 +68,7 @@ Playing with data
 访问单元格
 ++++++++++++++++++
 
-现在我们已经知道如何创建工作表，我们可以开始修改单元格内容了。
+现在我们已经知道如何创建工作表，接下来可以开始修改单元格内容了。
 可以直接通过工作表的键来访问单元格::
 
     >>> c = ws['A4']
@@ -144,7 +144,7 @@ Playing with data
 
   由于性能原因 `Worksheet.iter_cols()` 方法在只读模式下不可用。
 
-如果你需要遍历文件中的所有行和列，你可以使用 `Worksheet.rows` 属性 ::
+如果需要遍历文件中的所有行和列，可以使用 `Worksheet.rows` 属性 ::
 
     >>> ws = wb.active
     >>> ws['C9'] = 'hello world'
@@ -197,7 +197,7 @@ Values only
        for value in row:
          print(value)
 
-`Worksheet.iter_rows` 和 `Worksheet.iter_cols` 可以用 :code:`values_only` 参数来近返回单元格值::
+`Worksheet.iter_rows` 和 `Worksheet.iter_cols` 可以用 :code:`values_only` 参数来返回单元格值::
 
   >>> for row in ws.iter_rows(min_row=1, max_col=3, max_row=2, values_only=True):
   ...   print(row)
@@ -234,7 +234,7 @@ Values only
 
 .. note::
 
-    文件名后缀并不强制为 xlsx 或 xlsm，但是如果你没使用官方后缀名会在用其他的应用打开的时候会遇到一些麻烦。
+    文件名后缀并不强制为 xlsx 或 xlsm，但是如果没使用官方后缀名，会在用其他应用打开时遇到一些麻烦。
 
     由于 OOXML 文件基本上都是 ZIP 文件，你也可以用你喜欢的 ZIP 压缩管理器打开
 
@@ -252,7 +252,7 @@ Values only
 
 .. warning::
 
-    你应当在保存模板文档时监视数据的属性和我文档拓展名，否则引擎可能会无法打开文档。
+    你应当在保存模板文档时监视数据的属性和文档拓展名，否则引擎可能会无法打开文档。
 
 .. note::
 
@@ -281,7 +281,7 @@ Values only
 保存成流(stream)
 ++++++++++++++++++
 
-如果你想把文件保存成流。例如当使用 Pyramid, Flask 或 Django 等 web 应用程序时，你可以提供 :func:`NamedTemporaryFile`::
+如果想把文件保存成流。例如当使用 Pyramid, Flask 或 Django 等 web 应用程序时，可以提供 :func:`NamedTemporaryFile`::
 
 
     >>> from tempfile import NamedTemporaryFile
@@ -297,7 +297,7 @@ Values only
 从文件加载
 -------------------
 
-你可以使用 :func:`openpyxl.load_workbook` 方法来打开一个已存在的工作表::
+可以使用 :func:`openpyxl.load_workbook` 方法来打开一个已存在的工作表::
 
     >>> from openpyxl import load_workbook
     >>> wb2 = load_workbook('test.xlsx')
