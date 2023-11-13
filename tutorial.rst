@@ -9,7 +9,7 @@
     >>> from openpyxl import Workbook
     >>> wb = Workbook()
 
-一个工作表至少有一个工作簿. 你可以通过 `Workbook.active` 来获取这个属性::
+一个工作簿至少有一个工作表. 你可以通过 `Workbook.active` 来获取这个属性::
 
     >>> ws = wb.active
 
